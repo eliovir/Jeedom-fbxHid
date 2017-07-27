@@ -177,8 +177,8 @@ class client{
 					}
 				}
 			}
-            catch timeout{ continue;}
-            catch Exception as e { 
+           // catch timeout{ continue;}
+            catch (Exception $e) {
                // print e->message
                 //print '[Handshaking] unexpected error occurs\n' ## For debugging
                 return False;
