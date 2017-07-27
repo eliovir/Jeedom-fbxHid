@@ -172,7 +172,8 @@ class client{
                         $recvPkt = $this->conn->decode($recvData);
                         //$sendPkt = rudpProcessSwitch[$recvPkt['pktType']]($recvPkt, $this->conn);
                         return True;
-					}catch(){
+					}
+		catch{
 						continue;
 					}
 				}
