@@ -54,11 +54,11 @@ class rudpConnection{
 		}
 	}
     public function checkTime($time){
-            if($time - $this->time) > $this->END_WAIT{
+            if($time - $this->time > $this->END_WAIT){
                 return False;
-			}
+	}
             return True;
-		}
+	}
 	public function rudpPacket($pktType = null, $pktId = null, $data = ''){
 		return {'pktType': $pktType, 'pktId': $pktId, 'data': $data};
 	}
