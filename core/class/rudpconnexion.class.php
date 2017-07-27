@@ -77,7 +77,7 @@ class rudpConnection{
 	public function processDAT($rudpPkt, $c){
 		if($this->DAT == $c->wait){
 			if($rudpPkt['pktId'] == $c->pktId){
-				if(array_search($this->SYN,$c->accept){ 
+				if(array_search($this->SYN,$c->accept)){ 
 					$c->accept->remove($this->SYN);
 				}
 				$c->pktId += 1;
