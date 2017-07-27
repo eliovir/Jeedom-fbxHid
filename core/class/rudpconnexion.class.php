@@ -120,7 +120,7 @@ class rudpConnection{
 		throw new Exception('processACK', $rudpPkt);
 	}
 	public function processFIN_ACK($rudpPkt, $c){
-		if($this->FIN_ACK == $c.wait and $rudpPkt['pktId'] == $c->pktId + 1;){
+		if($this->FIN_ACK == $c.wait and $rudpPkt['pktId'] == $c->pktId + 1){
 			$c->pktId += 1;
 			throw new Exception($c);
 		}
