@@ -87,7 +87,7 @@ class rudpConnection{
 			}elseif($rudpPkt['pktId'] == $c->pktId - 1){ 
 				$c->time   = time();
 				return $this->rudpPacket($this->ACK, $c->pktId);
-			}elseif $rudpPkt['pktId'] < $c->pktId - 1{ 
+			}elseif($rudpPkt['pktId'] < $c->pktId - 1){ 
 				throw new Exception('processDAT [Duplicated]', $rudpPkt) ;
 			}# Bugs
 		}
