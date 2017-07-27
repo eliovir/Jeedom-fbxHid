@@ -60,7 +60,7 @@ class rudpConnection{
             return True;
 	}
 	public function rudpPacket($pktType = null, $pktId = null, $data = ''){
-		return {'pktType': $pktType, 'pktId': $pktId, 'data': $data};
+		return arary('pktType'=> $pktType, 'pktId'=> $pktId, 'data'=> $data};
 	}
 	public function processSYN($rudpPkt, $c){
 		if(array_search($this->SYN, $c->accept)){
