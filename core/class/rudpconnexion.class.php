@@ -72,13 +72,13 @@ class rudpConnection{
 			$c->time  = time();
 			return $this->rudpPacket($this->SYN_ACK, $c->pktId);
 		}
-		throw new Exception('processSYN', $rudpPkt)
+		throw new Exception('processSYN', $rudpPkt);
 	}
 	public function processDAT($rudpPkt, $c){
 		if($this->DAT == $c->wait){
 			if($rudpPkt['pktId'] == $c->pktId){
 				if(array_search($this->SYN,$c->accept){ 
-					$c->accept->remove($this->SYN)
+					$c->accept->remove($this->SYN);
 				}
 				$c->pktId += 1;
 				$c->data  += $rudpPkt['data'];
@@ -88,7 +88,7 @@ class rudpConnection{
 				$c->time   = time();
 				return $this->rudpPacket($this->ACK, $c->pktId);
 			}elseif $rudpPkt['pktId'] < $c->pktId - 1{ 
-				throw new Exception('processDAT [Duplicated]', $rudpPkt) 
+				throw new Exception('processDAT [Duplicated]', $rudpPkt) ;
 			}# Bugs
 		}
 		throw new Exception('processDAT', $rudpPkt);
@@ -108,7 +108,7 @@ class rudpConnection{
 		if($this->SYN_ACK == $c->wait and $rudpPkt['pktId'] == $c->pktId + 1){
 			$c->wait = $this->ACK;
 			$c->pktId += 1;
-			return $this->rudpPacket($this->DAT, $c->pktId)
+			return $this->rudpPacket($this->DAT, $c->pktId);
 		}
 		throw new Exception('processSYN_ACK', $rudpPkt);
 	}
@@ -121,7 +121,7 @@ class rudpConnection{
 	}
 	public function processFIN_ACK($rudpPkt, $c){
 		if(this->FIN_ACK == $c.wait and $rudpPkt['pktId'] == $c.pktId + 1){
-			$c.pktId += 1
+			$c.pktId += 1;
 			throw new Exception( $c);
 		}
 		throw new Exception('processFIN_ACK', $rudpPkt);
@@ -137,7 +137,7 @@ class rudpConnection{
 	    if (count($bitStr) < 4)
 		throw new Exception();
 		else{
-			$header  = unpack('i', $bitStr[4])[0]
+			$header  = unpack('i', $bitStr[4])[0];
 			return $this->rudpPacket($header & 0x7f000000, $header & 0x00ffffff, $bitStr[4]);
 		}
 	}
@@ -157,12 +157,12 @@ class client{
     public function connect(){
         $this->conn = new rudpConnection($this->socketip, $this->socketport);
         socket_set_block($this->skt);
-        #$this->skt->settimeout(RTO)
+        #$this->skt->settimeout(RTO);
         while($this->MAX_RESND == $i){
             try{ 
 				$data=$this->conn->encode($this->conn->rudpPacket($this->SYN, $pktId));
 				socket_sendto($this->skt,$data,strlen($data),0,$this->socketip);
-                //print $this->rudpPacket(SYN, $this->conn->pktId)     ## For debugging
+                //print $this->rudpPacket(SYN, $this->conn->pktId) ;    ## For debugging
              
                 while(True){
 					$from = '';
