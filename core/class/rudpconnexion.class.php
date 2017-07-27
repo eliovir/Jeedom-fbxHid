@@ -107,7 +107,7 @@ class rudpConnection{
 	public function processSYN_ACK($rudpPkt, $c){
 		if($this->SYN_ACK == $c->wait and $rudpPkt['pktId'] == $c->pktId + 1){
 			$c->wait = $this->ACK;
-			$c->pktId += 1;
+			$c->pktId++;
 			return $this->rudpPacket($this->DAT, $c->pktId);
 		}
 		throw new Exception('processSYN_ACK', $rudpPkt);
