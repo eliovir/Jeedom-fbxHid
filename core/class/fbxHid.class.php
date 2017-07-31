@@ -13,6 +13,42 @@ class fbxHid extends eqLogic {
 	        'border' => true,
 	        'border-radius' => true
 	));
+	public static function deamon_info() {
+		$return = array();
+		$return['log'] = 'fbxHid';	
+		$return['launchable'] = 'ok';
+		$return['state'] = 'ok';
+		return $return;
+	}
+	public static function deamon_start($_debug = false) {
+		$deamon_info = self::deamon_info();
+		if ($deamon_info['launchable'] != 'ok') 
+			return;
+		log::remove('fbxHid');
+		self::deamon_stop();
+		$cron = cron::byClassAndFunction('fbxHid', 'Telecommande');
+		if (!is_object($cron)) {
+			$cron = new cron();
+			$cron->setClass('fbxHid');
+			$cron->setFunction('Telecommande');
+			$cron->setEnable(1);
+			$cron->setDeamon(1);
+			$cron->setSchedule('* * * * *');
+			$cron->setTimeout('999999');
+			$cron->save();
+		}
+		$cron->start();
+		$cron->run();
+	}
+	public static function deamon_stop() {
+		$cron = cron::byClassAndFunction('fbxHid', 'Telecommande');
+		if (is_object($cron)) {
+			$cron->stop();
+			$cron->remove();
+		}
+	}
+	public static function Telecommande() {
+	}
 	public function AddCommande($Name,$_logicalId,$Page,$Code) {
 		$Commande = $this->getCmd(null,$_logicalId);
 		if (!is_object($Commande))
