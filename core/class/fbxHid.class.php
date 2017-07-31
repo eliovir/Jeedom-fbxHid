@@ -49,6 +49,21 @@ class fbxHid extends eqLogic {
 	}
 	public static function Telecommande() {
 	}
+	public function detect(){
+		$zeroconf = new Zeroconf();
+		//print("Browsing services...");
+		//$listener = new MyListener();
+		//$browser = ServiceBrowser(zeroconf, "_hid._udp.local.", listener);
+		$freebox=False;
+		while($freebox==False){ 
+			foreach($servers as $server){
+				if(in_array("Freebox",$server->name))
+				$freebox=$server;
+			}
+		}
+		$zeroconf->close();
+		return $freebox;
+	}
 	public function AddCommande($Name,$_logicalId,$Page,$Code) {
 		$Commande = $this->getCmd(null,$_logicalId);
 		if (!is_object($Commande))
