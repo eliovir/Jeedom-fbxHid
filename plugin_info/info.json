@@ -4,5 +4,6 @@
 	"licence" : "AGPL",
 	"author" : "Halbout Michael",
 	"require" : "3.0",
-	"category" : "multimedia"
+	"category" : "multimedia",
+	"hasOwnDeamon" : true
 }
