@@ -1,7 +1,7 @@
 <?php
 /* * ***************************Includes********************************* */
 require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
-include_file('core', 'rudpconnexion', 'class', 'fbxHid');
+//include_file('core', 'rudpconnexion', 'class', 'fbxHid');
 class fbxHid extends eqLogic {
 	public static $_widgetPossibility = array('custom' => array(
 	        'visibility' => true,
@@ -48,21 +48,16 @@ class fbxHid extends eqLogic {
 		}
 	}
 	public static function Telecommande() {
-	}
-	public function detect(){
-		$zeroconf = new Zeroconf();
-		//print("Browsing services...");
-		//$listener = new MyListener();
-		//$browser = ServiceBrowser(zeroconf, "_hid._udp.local.", listener);
-		$freebox=False;
-		while($freebox==False){ 
-			foreach($servers as $server){
-				if(in_array("Freebox",$server->name))
-				$freebox=$server;
-			}
+		$socket = socket_create(AF_INET, SOCK_DGRAM, 0);
+		$r = fopen("/dev/urandom", "r");
+		$packet="\x02\x01"+"\x00"*10;
+		socket_sendto($socket,$packet , strlen($packet), 0, '127.0.0.1', 4242);
+		while(true){
+			$packet=fread($r,12);
+			log::add('fbxHid','debug','Packet '.$packet);
+			socket_sendto($socket,$packet , strlen($packet), 0, '127.0.0.1', 4242);
 		}
-		$zeroconf->close();
-		return $freebox;
+
 	}
 	public function AddCommande($Name,$_logicalId,$Page,$Code) {
 		$Commande = $this->getCmd(null,$_logicalId);
