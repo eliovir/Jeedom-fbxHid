@@ -17,7 +17,11 @@ class fbxHid extends eqLogic {
 		$return = array();
 		$return['log'] = 'fbxHid';	
 		$return['launchable'] = 'ok';
-		$return['state'] = 'ok';
+		$cron = cron::byClassAndFunction('fbxHid', 'Telecommande');
+		if(is_object($cron) && $cron->running())
+			$return['state'] = 'ok';
+		else
+			$return['state'] = 'nok';
 		return $return;
 	}
 	public static function deamon_start($_debug = false) {
