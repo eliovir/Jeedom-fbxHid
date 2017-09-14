@@ -152,6 +152,10 @@ class fbxHid extends eqLogic {
 }
 class fbxHidCmd extends cmd {
 	public function execute($_options = array())	{
-		
+		$cmd = 'sudo python ' . dirname(__FILE__) . '/../remotefreebox/';
+		$cmd .= " cmdFbx.py ";
+		$cmd .= $this->getLogicalId();
+		$cmd .= ' >> ' . log::getPathToLog('fbxHid') . ' 2>&1 &';
+		exec($cmd);
 	}
 }
