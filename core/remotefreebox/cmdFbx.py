@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 # coding: utf-8
-from remotefreebox.freeboxcontroller import FreeboxController
+from freeboxcontroller import FreeboxController
 import sys
 
 __main__
