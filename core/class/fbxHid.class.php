@@ -13,6 +13,20 @@ class fbxHid extends eqLogic {
 	        'border' => true,
 	        'border-radius' => true
 	));
+		public static function dependancy_info() {
+		$return = array();
+		$return['state'] = 'ok';
+		return $return;
+	}
+	public static function dependancy_install() {
+		if (file_exists('/tmp/compilation_eibd_in_progress')) {
+			return;
+		}
+		log::remove('fbxHid');
+		$cmd = 'sudo python ' . dirname(__FILE__) . '/../../ressources/setup.py';
+		$cmd .= ' >> ' . log::getPathToLog('fbxHid') . ' 2>&1 &';
+		exec($cmd);
+	}
 	public static function deamon_info() {
 		$return = array();
 		$return['log'] = 'fbxHid';	
