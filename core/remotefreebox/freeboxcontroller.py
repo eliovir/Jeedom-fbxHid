@@ -3,12 +3,12 @@
 import sys
 from threading import Thread
 
-from .detectserver import detect
-from .rudp.client import client_handler
-from .event_loop import event_loop
-from .rudp.rudp import rudp
-from .rudp_hid_client import rudp_hid_client
-from .fbx_descriptor import fbx_foils_hid_device_descriptor, fbx_get_command
+from detectserver import detect
+from rudp.client import client_handler
+from event_loop import event_loop
+from rudp.rudp import rudp
+from rudp_hid_client import rudp_hid_client
+from fbx_descriptor import fbx_foils_hid_device_descriptor, fbx_get_command
 
 
 def info(s):
