@@ -21,13 +21,13 @@ class fbxHid extends eqLogic {
 	public static function dependancy_install() {
 		log::remove('fbxHid');
 		$cmd = 'sudo apt-get install python3';
-		$cmd .= ' >> ' . log::getPathToLog('fbxHid') . ' 2>&1 &';
+		$cmd .= ' >> ' . log::getPathToLog('fbxHid');
 		exec($cmd);
 		$cmd = 'sudo apt-get install python-pip';
-		$cmd .= ' >> ' . log::getPathToLog('fbxHid') . ' 2>&1 &';
+		$cmd .= ' >> ' . log::getPathToLog('fbxHid');
 		exec($cmd);
 		$cmd = 'sudo python ' . dirname(__FILE__) . '/../../ressources/setup.py';
-		$cmd .= ' >> ' . log::getPathToLog('fbxHid') . ' 2>&1 &';
+		$cmd .= ' >> ' . log::getPathToLog('fbxHid');
 		exec($cmd);
 	}
 	public static function deamon_info() {
