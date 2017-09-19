@@ -26,7 +26,7 @@ class fbxHid extends eqLogic {
 		$cmd = 'sudo apt-get install python-pip';
 		$cmd .= ' >> ' . log::getPathToLog('fbxHid');
 		exec($cmd);
-		$cmd = 'sudo python ' . dirname(__FILE__) . '/../../ressources/setup.py';
+		$cmd = 'sudo pip install zeroconf';
 		$cmd .= ' >> ' . log::getPathToLog('fbxHid');
 		exec($cmd);
 	}
