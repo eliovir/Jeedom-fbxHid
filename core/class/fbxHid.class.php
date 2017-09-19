@@ -117,7 +117,7 @@ class fbxHid extends eqLogic {
 		$this->AddCommande('0','0',0x7,0x59);	 	 
 		$this->AddCommande('1','1',0x7,0x5A);	 	 
 		$this->AddCommande('2','2',0x7,0x5B);	  
-		$this->AddCommande('3','2',0x7,0x5C);	 	 
+		$this->AddCommande('3','3',0x7,0x5C);	 	 
 		$this->AddCommande('4','4',0x7,0x5D);	 	 
 		$this->AddCommande('5','5',0x7,0x5E);	 	 
 		$this->AddCommande('6','6',0x7,0x5F);	 	 
