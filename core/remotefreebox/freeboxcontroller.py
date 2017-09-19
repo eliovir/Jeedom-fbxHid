@@ -12,10 +12,10 @@ from .fbx_descriptor import fbx_foils_hid_device_descriptor, fbx_get_command
 
 
 def info(s):
-   #print(s, file=sys.stderr)
+   print(s)
 
 def success(s):
-      #print(s, file=sys.stderr)
+   print(s)
 
 
 class FreeboxController(object):
