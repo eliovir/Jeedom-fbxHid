@@ -92,6 +92,9 @@ class fbxHid extends eqLogic {
 			$Commande->setSubType('other');
 			$Commande->setName($Name);
 		}
+		
+		$Commande->setTemplate('dashboard','Telecommande');
+		$Commande->setTemplate('mobile', 'Telecommande');
 		$Commande->setConfiguration('Page',$Page);
 		$Commande->setConfiguration('Code',$Code);
 		$Commande->save();
